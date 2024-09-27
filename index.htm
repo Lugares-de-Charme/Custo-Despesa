@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de custo e despesa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Tela de Início -->
+    <section id="inicio" class="tela">
+        <h1>Bem-vindo a calculadora de custo e despesa</h1>
+        <button onclick="mudarTela('custo')">Custo</button>
+        <button onclick="mudarTela('producao')">Despesa</button>
+        <a href="#tutorial" onclick="mudarTela('tutorial')">Link para página de "tutorial"</a>
+    </section>
+
+    <!-- Tela de Tutorial -->
+    <section id="tutorial" class="tela" style="display:none;">
+        <h2>Informações sobre o funcionamento do sistema</h2>
+        <p>Essa página contém instruções detalhadas sobre o processo de cálculo de custos e despesas.</p>
+        <a href="#" onclick="mudarTela('inicio')">Voltar para Início</a>
+    </section>
+
+    <!-- Tela de Peças Produzidas no Mês -->
+    <section id="producao" class="tela" style="display:none;">
+        <h2>Peças Produzidas no Mês</h2>
+        <label>Quantidade de Peças Produzidas:</label>
+        <input type="number" id="qtdPecasMes">
+        <br>
+        <button onclick="mudarTela('despesa');capturarQtdPecasMes()">Avançar para Registrar Despesas</button>
+        <button onclick="mudarTela('inicio')">Voltar ao início</button>
+    </section>
+
+  <section id="custo" class="tela" style="display:none;">
+    <h2>Cálculo de Custos</h2>
+    <label>Matéria-prima:</label>
+    <input type="text" id="materiaPrima">
+    <label>Custo:</label>
+    <input type="number" id="custoMP">
+    <label>Rende quantas peças?</label>
+    <input type="number" id="qtdPecas">
+    <br>
+    <button onclick="atualizarValores()">Atualizar</button>
+    <button onclick="calcularCusto()">Confirmar</button>
+    <button onclick="mudarTela('inicio')">Voltar para Início</button>
+</section>
+
+<!-- Tela de Resultado de Despesas -->
+<section id="resultadoDespesa" class="tela" style="display:none;">
+    <h2>Resultado do Cálculo de Despesas</h2>
+    <div id="resultadoDespesaTexto" class="resultado"></div> <!-- Onde a tabela de despesas será exibida -->
+    <button onclick="mudarTela('inicio')">Voltar para Início</button>
+</section>
+
+
+    <!-- Tela de Cálculo de Despesas -->
+    <section id="despesa" class="tela" style="display:none;">
+        <h2>Cálculo de Despesas</h2>
+        <label>Despesa:</label>
+        <input type="text" id="despesaNome">
+        <label>Valor:</label>
+        <input type="number" id="valorDespesa">
+        <br>
+        <button onclick="atualizarValores()">Atualizar</button>
+        <button onclick="calcularDespesa()">Confirmar</button>
+        <button onclick="mudarTela('producao')">Alterar a quantidade de peças produzidas no mês</button>
+    </section>
+
+    <!-- Tela de Peças Produzidas no Mês -->
+<section id="pecasProduzidas" class="tela" style="display:none;">
+    <h2>Quantidade de Peças Produzidas no Mês</h2>
+    <label for="qtdPecasMes">Informe o número de peças produzidas:</label>
+    <input type="number" id="qtdPecasMes" placeholder="Ex: 100">
+    <br>
+    <button onclick="confirmarProducao()">Confirmar</button>
+</section>
+
+
+    <section id="resultadoCusto" class="tela" style="display:none;">
+        <h2>Resultado do Cálculo de Custos</h2>
+        <div id="resultadoCustoTexto"></div> <!-- Onde a tabela será exibida -->
+        <button onclick="mudarTela('inicio')">Voltar para Início</button>
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>
